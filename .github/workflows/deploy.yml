@@ -24,6 +24,5 @@ jobs:
 
             git pull origin main
 
-            pkill -f "python3 -m http.server 8080" || true
-
-            nohup python3 -m http.server 8080 > server.log 2>&1 &
+            fuser -k 8080/tcp || true
+            nohup python3 -m http.server 8080 > server.log 2>&1 < /dev/null &
